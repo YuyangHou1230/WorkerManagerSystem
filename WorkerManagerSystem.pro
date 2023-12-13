@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,6 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DataBase/databaseimpl.cpp \
+    DataBase/mysql.cpp \
+    Utility/singleton.cpp \
     flowcontroler.cpp \
     loginform.cpp \
     main.cpp \
@@ -23,6 +26,10 @@ SOURCES += \
     modifypswddlg.cpp
 
 HEADERS += \
+    DataBase/databaseimpl.h \
+    DataBase/mysql.h \
+    Utility/singleton.h \
+    defs.h \
     flowcontroler.h \
     loginform.h \
     mainwindow.h \

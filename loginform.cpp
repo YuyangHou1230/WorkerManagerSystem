@@ -15,6 +15,9 @@ LoginForm::~LoginForm()
 
 void LoginForm::on_btnLogin_clicked()
 {
+    // 有临时密码
+
+
     emit loginSuccess(0);
 }
 

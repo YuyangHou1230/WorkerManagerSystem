@@ -2,8 +2,12 @@
 
 #include "loginform.h"
 #include "mainwindow.h"
+#include "Utility/singleton.h"
+#include "DataBase/mysql.h"
+
 #include <QApplication>
 #include <QDebug>
+#include <QMessageBox>
 
 FlowControler::FlowControler()
 {
@@ -16,6 +20,22 @@ int FlowControler::run(int argc, char *argv[])
     int          ret    = 0;
 
     // 数据库连接
+    // 连接数据库
+    CustomDB::Mysql &mysql = Singleton<CustomDB::Mysql>::getInstance();
+    mysql.setDBParams("10.1.1.72", 3306, "WorkerManager", "root", "123456");
+    if(!mysql.connect())
+    {
+        qCritical() << "数据库连接失败！";
+        // 添加用户确定选项
+        QMessageBox::StandardButton btn = QMessageBox::question( nullptr, "提示", "数据库连接失败，是否继续使用软件？");
+        if ( btn != QMessageBox::Yes )
+        {
+            return 0;
+        }
+    }
+    else{
+        qInfo() << "数据库连接成功！";
+    }
 
     // 使用循环完成注销功能,这样的好处是所有的对象都是重新创建，不需要自己去手动恢复主界面到初始状态
     while ( logout )
