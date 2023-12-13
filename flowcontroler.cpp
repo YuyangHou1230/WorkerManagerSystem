@@ -15,7 +15,9 @@ int FlowControler::run(int argc, char *argv[])
     bool         logout = true;
     int          ret    = 0;
 
-    // 使用循环完成注销功能
+    // 数据库连接
+
+    // 使用循环完成注销功能,这样的好处是所有的对象都是重新创建，不需要自己去手动恢复主界面到初始状态
     while ( logout )
     {
         logout = false;

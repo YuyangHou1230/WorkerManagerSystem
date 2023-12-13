@@ -22,6 +22,8 @@ signals:
 private slots:
     void on_btnLogin_clicked();
 
+    void on_btnCancel_clicked();
+
 private:
     Ui::LoginForm *ui;
 };

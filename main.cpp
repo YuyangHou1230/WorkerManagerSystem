@@ -3,8 +3,7 @@
 int main(int argc, char *argv[])
 {
 
-    FlowControler controler;
-    controler.run(argc, argv);
+    int ret = FlowControler::getInstance().run(argc, argv);
 
-    return 0;
+    return ret;
 }

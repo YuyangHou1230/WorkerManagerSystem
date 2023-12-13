@@ -121,6 +121,9 @@
               <height>40</height>
              </size>
             </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
             <property name="placeholderText">
              <string>请输入密码</string>
             </property>
@@ -195,7 +198,7 @@ border: 1px solid rgb(180, 180, 180);
       </font>
      </property>
      <property name="text">
-      <string>职工管理系统</string>
+      <string>XX公司职工管理系统</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

@@ -6,9 +6,16 @@
 class FlowControler
 {
 public:
-    FlowControler();
+    static FlowControler &getInstance()
+    {
+        static FlowControler flow;
+        return flow;
+    }
 
-    void run(int argc, char *argv[]);
+    int run(int argc, char *argv[]);
+
+private:
+    FlowControler();
 };
 
 #endif   // FLOWCONTROLER_H

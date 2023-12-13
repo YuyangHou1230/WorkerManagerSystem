@@ -62,7 +62,7 @@
           </font>
          </property>
          <property name="text">
-          <string>职工管理系统</string>
+          <string>XX公司职工管理系统</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
