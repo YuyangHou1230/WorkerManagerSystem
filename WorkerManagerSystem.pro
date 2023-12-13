@@ -16,17 +16,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    flowcontroler.cpp \
     loginform.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    modifypswddlg.cpp
 
 HEADERS += \
+    flowcontroler.h \
     loginform.h \
-    mainwindow.h
+    mainwindow.h \
+    modifypswddlg.h
 
 FORMS += \
     loginform.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    modifypswddlg.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

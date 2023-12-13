@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "modifypswddlg.h"
+
 #include <QDateTime>
+#include <QMessageBox>
 #include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -41,9 +44,18 @@ void MainWindow::init()
 
 void MainWindow::slotActionUserModifyPswd()
 {
+    ModifyPswdDlg dlg(this);
+    dlg.exec();
 }
 
 void MainWindow::slotActionUserLoginOut()
 {
+    // 添加用户确定选项
+    QMessageBox::StandardButton btn = QMessageBox::question(this, "提示", "确定要注销吗？");
+    if ( btn != QMessageBox::Yes )
+    {
+        return;
+    }
+
     emit loginOut();
 }

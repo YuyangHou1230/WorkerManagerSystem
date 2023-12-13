@@ -17,3 +17,8 @@ void LoginForm::on_btnLogin_clicked()
 {
     emit loginSuccess(0);
 }
+
+void LoginForm::on_btnCancel_clicked()
+{
+    close();
+}
