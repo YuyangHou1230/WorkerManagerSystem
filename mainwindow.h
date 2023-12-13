@@ -4,7 +4,10 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -15,7 +18,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void init();
+
+signals:
+    // 注销
+    void loginOut();
+
+private slots:
+    void slotActionUserModifyPswd();
+    void slotActionUserLoginOut();
+
 private:
     Ui::MainWindow *ui;
 };
-#endif // MAINWINDOW_H
+#endif   // MAINWINDOW_H
