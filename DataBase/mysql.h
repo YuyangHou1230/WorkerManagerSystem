@@ -3,7 +3,8 @@
 
 #include "databaseimpl.h"
 
-namespace CustomDB {
+namespace CustomDB
+{
 class Mysql : public DataBaseImpl
 {
 public:
@@ -15,8 +16,11 @@ public:
     bool connect();
 
     void disConnect();
+
+private:
+    bool hasSetParams;
 };
 
-}
+}   // namespace CustomDB
 
-#endif // MYSQL_H
+#endif   // MYSQL_H
