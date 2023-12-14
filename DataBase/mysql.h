@@ -1,11 +1,11 @@
 #ifndef MYSQL_H
 #define MYSQL_H
 
-#include "databaseimpl.h"
+#include "virtualdatabase.h"
 
 namespace CustomDB
 {
-class Mysql : public DataBaseImpl
+class Mysql : public VirtualDataBase
 {
 public:
     Mysql();

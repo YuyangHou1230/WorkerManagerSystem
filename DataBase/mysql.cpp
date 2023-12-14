@@ -45,6 +45,11 @@ bool CustomDB::Mysql::connect()
     {
         qDebug() << m_db.lastError().text();
     }
+    else{
+        m_query = QSqlQuery(m_db);
+
+        qDebug() << m_db.tables();
+    }
     return ret;
 }
 

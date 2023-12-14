@@ -18,6 +18,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     DataBase/databaseimpl.cpp \
     DataBase/mysql.cpp \
+    DataBase/table.cpp \
+    DataBase/virtualdatabase.cpp \
+    DataBase/workermanagerdb.cpp \
     Utility/singleton.cpp \
     flowcontroler.cpp \
     loginform.cpp \
@@ -28,6 +31,9 @@ SOURCES += \
 HEADERS += \
     DataBase/databaseimpl.h \
     DataBase/mysql.h \
+    DataBase/table.h \
+    DataBase/virtualdatabase.h \
+    DataBase/workermanagerdb.h \
     Utility/singleton.h \
     defs.h \
     flowcontroler.h \

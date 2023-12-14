@@ -3,7 +3,7 @@
 #include "loginform.h"
 #include "mainwindow.h"
 #include "Utility/singleton.h"
-#include "DataBase/mysql.h"
+#include "DataBase/workermanagerdb.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -21,9 +21,9 @@ int FlowControler::run(int argc, char *argv[])
 
     // 数据库连接
     // 连接数据库
-    CustomDB::Mysql &mysql = Singleton<CustomDB::Mysql>::getInstance();
-    mysql.setDBParams("10.1.1.72", 3306, "WorkerManager", "root", "123456");
-    if(!mysql.connect())
+    CustomDB::WorkerManagerDB &db = Singleton<CustomDB::WorkerManagerDB>::getInstance();
+    db.setDBParams("10.1.1.72", 3306, "WorkerManager", "root", "123456");
+    if(!db.connect())
     {
         qCritical() << "数据库连接失败！";
         // 添加用户确定选项
@@ -35,6 +35,8 @@ int FlowControler::run(int argc, char *argv[])
     }
     else{
         qInfo() << "数据库连接成功！";
+
+        db.initSystemTable();
     }
 
     // 使用循环完成注销功能,这样的好处是所有的对象都是重新创建，不需要自己去手动恢复主界面到初始状态
@@ -59,6 +61,7 @@ int FlowControler::run(int argc, char *argv[])
         }
     }
 
+    db.disConnect();
     qDebug() << "程序退出";
 
     return ret;

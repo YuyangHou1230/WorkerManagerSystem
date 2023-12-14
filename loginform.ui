@@ -98,7 +98,7 @@
            <number>25</number>
           </property>
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="editUser">
             <property name="minimumSize">
              <size>
               <width>280</width>
@@ -114,7 +114,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_2">
+           <widget class="QLineEdit" name="editPswd">
             <property name="minimumSize">
              <size>
               <width>280</width>
