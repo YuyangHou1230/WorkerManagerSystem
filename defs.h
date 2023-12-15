@@ -1,9 +1,9 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include <QDateTime>
 #include <QString>
 #include <QWidget>
-
 
 enum class SubWidgetType
 {
@@ -12,24 +12,47 @@ enum class SubWidgetType
 
 struct WidgetData
 {
-    QString name;
+    QString       name;
     SubWidgetType type;
-    QWidget *widget;
+    QWidget *     widget;
 
     WidgetData(QString _name, SubWidgetType _type, QWidget *_widget)
     {
-        name = _name;
-        type = _type;
+        name   = _name;
+        type   = _type;
         widget = _widget;
     }
 };
 
-namespace System {
+// 职工
+struct Employee
+{
+    enum Gender
+    {
+        Mail,
+        Femail
+    };
+    enum Position
+    {
+        CEO,
+        Manager,
+        HR,
+        Normal
+    };
 
+    int      id;
+    QString  name;
+    Gender   gender;
+    QDate    birthDay;
+    int      DepartMent;
+    Position position;
+    int      Salary;
+    QDate    hireDate;
+};
 
-
-
+namespace System
+{
 
 }
 
-#endif // DEFS_H
+#endif   // DEFS_H
