@@ -40,14 +40,15 @@ struct Employee
         Normal
     };
 
-    int      id;
-    QString  name;
-    Gender   gender;
-    QDate    birthDay;
-    int      DepartMent;
-    Position position;
-    int      Salary;
-    QDate    hireDate;
+    int        id;
+    QString    name;
+    Gender     gender;
+    QDate      birthDay;
+    int        DepartMent;
+    Position   position;
+    int        Salary;
+    QDate      hireDate;
+    QByteArray avatarData;
 };
 
 namespace System
