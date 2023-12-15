@@ -1,9 +1,9 @@
 #include "flowcontroler.h"
 
+#include "DataBase/workermanagerdb.h"
+#include "Utility/singleton.h"
 #include "loginform.h"
 #include "mainwindow.h"
-#include "Utility/singleton.h"
-#include "DataBase/workermanagerdb.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -20,20 +20,20 @@ int FlowControler::run(int argc, char *argv[])
     int          ret    = 0;
 
     // 数据库连接
-    // 连接数据库
     CustomDB::WorkerManagerDB &db = Singleton<CustomDB::WorkerManagerDB>::getInstance();
     db.setDBParams("10.1.1.72", 3306, "WorkerManager", "root", "123456");
-    if(!db.connect())
+    if ( !db.connect() )
     {
         qCritical() << "数据库连接失败！";
         // 添加用户确定选项
-        QMessageBox::StandardButton btn = QMessageBox::question( nullptr, "提示", "数据库连接失败，是否继续使用软件？");
+        QMessageBox::StandardButton btn = QMessageBox::question(nullptr, "提示", "数据库连接失败，是否继续使用软件？");
         if ( btn != QMessageBox::Yes )
         {
             return 0;
         }
     }
-    else{
+    else
+    {
         qInfo() << "数据库连接成功！";
 
         db.initSystemTable();

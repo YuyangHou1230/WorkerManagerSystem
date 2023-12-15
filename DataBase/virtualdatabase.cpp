@@ -5,16 +5,15 @@
 
 VirtualDataBase::VirtualDataBase()
 {
-
 }
 
 void VirtualDataBase::initTables(QList<Table> tables)
 {
-    if(!m_db.isValid())
+    if ( !m_db.isValid() )
     {
         return;
     }
-    if(!m_db.isOpen())
+    if ( !m_db.isOpen() )
     {
         return;
     }
@@ -23,7 +22,7 @@ void VirtualDataBase::initTables(QList<Table> tables)
     qDebug() << "initial tables";
     QStringList tableList = m_db.tables(QSql::AllTables);
 
-    for(auto p : tables)
+    for ( auto p : tables )
     {
         createTables(tableList, m_query, p.name(), p.getCreateSql());
     }
@@ -33,39 +32,46 @@ void VirtualDataBase::initTables(QList<Table> tables)
 
 Table VirtualDataBase::queryPatters(QList<Key> keys, Table table)
 {
-    Key key = keys.first();
-    QString queryStr ;
-    for(auto p : table.getKeys())
+    Key     key = keys.first();
+    QString queryStr;
+    for ( auto p : table.getKeys() )
     {
-        if(p.name == key.name)
+        if ( p.name == key.name )
         {
             key.type = p.type;
         }
     }
 
-    switch (key.type) {
-        case VARCHAR:
-            queryStr = QString("SELECT * FROM %1 WHERE %2 = '%3'").arg(table.name()).arg(keys.first().name).arg(keys.first().value.toString());
-            break;
-        case INTEGER:
-            queryStr = QString("SELECT * FROM %1 WHERE %2 = '%3'").arg(table.name()).arg(keys.first().name).arg(keys.first().value.toInt());
-            break;
-        case DATE:
-            break;
-
+    switch ( key.type )
+    {
+    case VARCHAR:
+        queryStr = QString("SELECT * FROM %1 WHERE %2 = '%3'").arg(table.name()).arg(keys.first().name).arg(keys.first().value.toString());
+        break;
+    case INTEGER:
+        queryStr = QString("SELECT * FROM %1 WHERE %2 = '%3'").arg(table.name()).arg(keys.first().name).arg(keys.first().value.toInt());
+        break;
+    case DATE:
+        break;
     }
 
     Table ret;
 
     QSqlQuery query(queryStr);
-    if (query.exec()) {
-        if (query.next()) {
-            ret = table;
+    if ( query.exec() )
+    {
+        // 查询成功则先赋值 表示查询有效
+        ret = table;
+        if ( query.next() )
+        {
             // 循环赋值
-            for(int i=0; i < table.getKeys().size(); i++)
+            for ( int i = 0; i < table.getKeys().size(); i++ )
             {
                 ret.m_keys[i].value = query.value(table.getKeys()[i].name);
             }
+        }
+        else
+        {
+            ret.isEmpty = true;
         }
     }
 
@@ -74,12 +80,13 @@ Table VirtualDataBase::queryPatters(QList<Key> keys, Table table)
 
 void VirtualDataBase::createTables(QStringList tableList, QSqlQuery &query, QString tabeName, QString sql)
 {
-    if(!tableList.contains(tabeName)){
+    if ( !tableList.contains(tabeName) )
+    {
         qDebug() << QString("%1表不存在，开始创建：%2").arg(tabeName).arg(sql);
-        bool ret = query.exec(sql);
+        bool    ret        = query.exec(sql);
         QString statusText = ret ? "成功" : "失败";
         qDebug() << QString("%1表创建%2").arg(tabeName).arg(statusText);
-        if(!ret)
+        if ( !ret )
         {
             qDebug() << query.lastError().text();
         }

@@ -1,14 +1,14 @@
 #ifndef LOGINFORM_H
 #define LOGINFORM_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui
 {
 class LoginForm;
 }
 
-class LoginForm : public QWidget
+class LoginForm : public QDialog
 {
     Q_OBJECT
 

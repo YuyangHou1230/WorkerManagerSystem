@@ -1,8 +1,9 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include <QString>
 #include <QList>
+#include <QString>
+#include <QVariant>
 
 enum KeyType
 {
@@ -13,8 +14,8 @@ enum KeyType
 
 struct Key
 {
-    KeyType type;
-    QString name;
+    KeyType  type;
+    QString  name;
     QVariant value;
     Key()
     {
@@ -29,7 +30,7 @@ struct Key
     static Key KeyValue(QString _name, QVariant value)
     {
         Key key;
-        key.name = _name;
+        key.name  = _name;
         key.value = value;
 
         return key;
@@ -54,13 +55,15 @@ public:
 
     QList<Key> getKeys() const;
 
+    bool getIsEmpty() const;
+
 private:
-    QString m_name;
+    QString    m_name;
     QList<Key> m_keys;
-    int m_primaryIndex;
+    int        m_primaryIndex;
 
     bool isValid;
-
+    bool isEmpty;
 };
 
-#endif // TABLE_H
+#endif   // TABLE_H

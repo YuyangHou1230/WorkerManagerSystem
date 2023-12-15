@@ -1,17 +1,18 @@
 #include "table.h"
 
-
 Table::Table()
 {
     isValid = false;
+    isEmpty = true;
 }
 
 Table::Table(QString name, QList<Key> keys, int primaryIndex)
 {
-    m_name = name;
-    m_keys = keys;
+    m_name         = name;
+    m_keys         = keys;
     m_primaryIndex = primaryIndex;
-    isValid = true;
+    isValid        = true;
+    isEmpty        = false;
 }
 
 Table Table::createTable(QString name, QList<Key> keys, int primaryIndex)
@@ -22,9 +23,9 @@ Table Table::createTable(QString name, QList<Key> keys, int primaryIndex)
 
 QVariant Table::value(QString keyName)
 {
-    for(auto p: m_keys)
+    for ( auto p : m_keys )
     {
-        if(p.name == keyName)
+        if ( p.name == keyName )
         {
             return p.value;
         }
@@ -41,17 +42,17 @@ QString Table::name()
 QString KeyTypeName(KeyType type)
 {
     QString ret;
-    switch (type) {
-        case VARCHAR:
-            ret = "VARCHAR(255)";
-            break;
-        case INTEGER:
-            ret = "INTEGER";
-            break;
-        case DATE:
-            ret = "DATE";
-            break;
-
+    switch ( type )
+    {
+    case VARCHAR:
+        ret = "VARCHAR(255)";
+        break;
+    case INTEGER:
+        ret = "INTEGER";
+        break;
+    case DATE:
+        ret = "DATE";
+        break;
     }
 
     return ret;
@@ -62,11 +63,11 @@ QString Table::getCreateSql()
     QString sql;
 
     QString content;
-    for(int i=0; i < m_keys.size(); i++)
+    for ( int i = 0; i < m_keys.size(); i++ )
     {
         Key key = m_keys[i];
         content += QString("%1 %2").arg(key.name).arg(KeyTypeName(key.type));
-        if(i != m_keys.size() - 1)
+        if ( i != m_keys.size() - 1 )
         {
             content += ", ";
         }
@@ -85,4 +86,9 @@ bool Table::getIsValid() const
 QList<Key> Table::getKeys() const
 {
     return m_keys;
+}
+
+bool Table::getIsEmpty() const
+{
+    return isEmpty;
 }

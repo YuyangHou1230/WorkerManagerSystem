@@ -4,12 +4,10 @@ namespace CustomDB
 {
 WorkerManagerImpl::WorkerManagerImpl()
 {
-
 }
 
 WorkerManagerDB::WorkerManagerDB()
 {
-
 }
 
 void WorkerManagerDB::initSystemTable()
@@ -21,26 +19,39 @@ void WorkerManagerDB::initSystemTable()
 
     userTable = Table::createTable("users", keys, 0);
 
-    initTables(  QList<Table>() << userTable);
+    initTables(QList<Table>() << userTable);
 }
 
-bool WorkerManagerDB::validateLogin(QString user, QString password)
+WorkerManagerDB::LoginRet WorkerManagerDB::validateLogin(QString user, QString password)
 {
-    Key key = Key::KeyValue("user", user);
+    LoginRet ret = LoginQueryFailed;
+
+    Key   key   = Key::KeyValue("user", user);
     Table table = queryPatters(QList<Key>() << key, userTable);
-    if(table.getIsValid()){
-        if(table.value("password") == password)
+    if ( table.getIsValid() )
+    {
+        if ( !table.getIsEmpty() )
         {
-            return true;
+            if ( table.value("password") == password )
+            {
+                ret = LoginSuccess;
+            }
+            else
+            {
+                ret = LoginErrorPswd;
+            }
+        }
+        else
+        {
+            ret = LoginErrorUser;
         }
     }
 
-    return false;
+    return ret;
 }
 
 void WorkerManagerDB::validateRegister(QString user, QString name)
 {
-
 }
 
-}
+}   // namespace CustomDB

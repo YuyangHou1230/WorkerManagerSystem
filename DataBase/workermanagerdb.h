@@ -8,10 +8,18 @@ namespace CustomDB
 class WorkerManagerImpl
 {
 public:
+    enum LoginRet
+    {
+        LoginSuccess,
+        LoginErrorUser,
+        LoginErrorPswd,
+        LoginQueryFailed,
+    };
+
     WorkerManagerImpl();
 
     // 登录
-    virtual bool validateLogin(QString user, QString name) = 0;
+    virtual LoginRet validateLogin(QString user, QString name) = 0;
     // 注册
     virtual void validateRegister(QString user, QString name) = 0;
 };
@@ -25,12 +33,12 @@ public:
 
     // WorkerManagerImpl interface
 public:
-    bool validateLogin(QString user, QString name);
-    void validateRegister(QString user, QString name);
+    LoginRet validateLogin(QString user, QString name);
+    void     validateRegister(QString user, QString name);
 
 private:
     Table userTable;
 };
-}
+}   // namespace CustomDB
 
-#endif // WORKERMANAGERDB_H
+#endif   // WORKERMANAGERDB_H
