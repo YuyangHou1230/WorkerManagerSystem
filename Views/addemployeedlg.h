@@ -3,8 +3,9 @@
 
 #include <QDialog>
 
-namespace Ui {
-    class AddEmployeeDlg;
+namespace Ui
+{
+class AddEmployeeDlg;
 }
 
 class AddEmployeeDlg : public QDialog
@@ -15,8 +16,13 @@ public:
     explicit AddEmployeeDlg(QWidget *parent = nullptr);
     ~AddEmployeeDlg();
 
+private slots:
+    void on_btnOk_clicked();
+
+    void on_btnCancel_clicked();
+
 private:
     Ui::AddEmployeeDlg *ui;
 };
 
-#endif // ADDEMPLOYEEDLG_H
+#endif   // ADDEMPLOYEEDLG_H
