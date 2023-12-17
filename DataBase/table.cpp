@@ -53,6 +53,8 @@ QString KeyTypeName(KeyType type)
     case DATE:
         ret = "DATE";
         break;
+        case BLOB:
+           ret = "BLOB";
     }
 
     return ret;

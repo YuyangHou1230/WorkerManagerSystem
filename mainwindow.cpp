@@ -2,9 +2,11 @@
 #include "ui_mainwindow.h"
 
 #include "modifypswddlg.h"
+#include "Views/employeemanagewidget.h"
 
 #include <QDateTime>
 #include <QMessageBox>
+#include <QPushButton>
 #include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -40,6 +42,21 @@ void MainWindow::init()
     menu->addAction(actionUserModifyPswd);
     menu->addAction(actionUserLoginOut);
     ui->btnUser->setMenu(menu);
+
+    addWidget("职工管理", new  EmployeeManageWidget());
+}
+
+void MainWindow::addWidget(QString name, QWidget *widget)
+{
+    QPushButton *btn = new QPushButton(name);
+    btn->setMinimumHeight(40);
+    ui->btnLayout->insertWidget(ui->btnLayout->count() - 1, btn);
+    ui->stackedWidget->addWidget(widget);
+
+    connect(btn, &QPushButton::clicked, [=](){
+        ui->stackedWidget->setCurrentWidget(widget);
+    });
+
 }
 
 void MainWindow::slotActionUserModifyPswd()

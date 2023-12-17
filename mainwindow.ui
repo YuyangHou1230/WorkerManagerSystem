@@ -112,7 +112,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QFrame" name="frame_2">
+     <widget class="QFrame" name="btnFrame">
       <property name="minimumSize">
        <size>
         <width>150</width>
@@ -127,26 +127,27 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>509</height>
-          </size>
-         </property>
-        </spacer>
+        <layout class="QVBoxLayout" name="btnLayout">
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QStackedWidget" name="stackedWidget">
-      <widget class="QWidget" name="page"/>
-      <widget class="QWidget" name="page_2"/>
-     </widget>
+     <widget class="QStackedWidget" name="stackedWidget"/>
     </item>
    </layout>
   </widget>

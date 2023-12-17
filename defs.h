@@ -42,6 +42,8 @@ struct Employee
 
     int        id;
     QString    name;
+    int        age;
+    QString    number;
     Gender     gender;
     QDate      birthDay;
     int        DepartMent;

@@ -108,6 +108,9 @@
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
+            <property name="text">
+             <string>admin</string>
+            </property>
             <property name="placeholderText">
              <string>请输入用户名</string>
             </property>
@@ -120,6 +123,9 @@
               <width>280</width>
               <height>40</height>
              </size>
+            </property>
+            <property name="text">
+             <string>admin</string>
             </property>
             <property name="echoMode">
              <enum>QLineEdit::Password</enum>
