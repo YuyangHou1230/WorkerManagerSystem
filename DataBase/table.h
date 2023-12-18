@@ -10,6 +10,7 @@ enum KeyType
     VARCHAR,
     INTEGER,
     DATE,
+    BLOB,
 };
 
 struct Key

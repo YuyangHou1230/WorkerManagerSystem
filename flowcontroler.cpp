@@ -19,6 +19,8 @@ int FlowControler::run(int argc, char *argv[])
     bool         logout = true;
     int          ret    = 0;
 
+//    qDebug() << getNoRepeatPingyinForWord("张三");
+
     // 数据库连接
     CustomDB::WorkerManagerDB &db = Singleton<CustomDB::WorkerManagerDB>::getInstance();
     db.setDBParams("10.1.1.72", 3306, "WorkerManager", "root", "123456");

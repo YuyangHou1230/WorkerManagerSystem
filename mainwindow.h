@@ -20,6 +20,8 @@ public:
 
     void init();
 
+    void addWidget(QString name, QWidget *widget);
+
 signals:
     // 注销
     void loginOut();

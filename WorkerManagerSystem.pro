@@ -23,6 +23,8 @@ SOURCES += \
     DataBase/workermanagerdb.cpp \
     Utility/singleton.cpp \
     Views/addemployeedlg.cpp \
+    Views/employeemanagewidget.cpp \
+    avatarset.cpp \
     flowcontroler.cpp \
     loginform.cpp \
     main.cpp \
@@ -37,6 +39,8 @@ HEADERS += \
     DataBase/workermanagerdb.h \
     Utility/singleton.h \
     Views/addemployeedlg.h \
+    Views/employeemanagewidget.h \
+    avatarset.h \
     defs.h \
     flowcontroler.h \
     loginform.h \
@@ -45,6 +49,7 @@ HEADERS += \
 
 FORMS += \
     Views/addemployeedlg.ui \
+    Views/employeemanagewidget.ui \
     loginform.ui \
     mainwindow.ui \
     modifypswddlg.ui
